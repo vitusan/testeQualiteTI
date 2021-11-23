@@ -2,15 +2,18 @@ async function connect(){
   if(global.connection && global.connection.state !== 'disconnected')
       return global.connection;
 
-  const dbUrl = process.env.DB_URL || '168.90.104.214';
+  const dbUrl = process.env.DB_URL;
+  const user = process.env.DB_USER;
+  const password = process.env.DB_PASSWORD;
+  const database = process.env.DB_DATABASE;
 
   const mysql = require("mysql2/promise");
   const connection = await mysql.createConnection({
     host: dbUrl,
     port: '3306',
-    user: 'VictorAndrade',
-    password: 'Victor*7808',
-    database: 'db_cadidatoVictorAndrade'
+    user: user,
+    password: password,
+    database: database
   });
   console.log("Conectou no MySQL!");
   global.connection = connection;
