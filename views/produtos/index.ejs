@@ -1,0 +1,76 @@
+<% layout('layouts/boilerplate')%>
+    <div class="col-md-8">
+        <div class="table-responsive">
+            <table class="table table-hover table-dark table-striped table-md my-5">
+                <thead>
+                    <tr>
+                        <th scope="col">Produto</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Imposto sobre o produto</th>
+                        <th scope="col">Tipo do imposto</th>
+                        <th scope="col">Valor financeiro em estoque</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% produtos.forEach((produto, index) => { %>
+                        <tr>
+                            <td hidden><%= produto.id_produto %></td>
+                            <td><%= produto.nome_produto %></td>
+                            <td><%= produto.valor_produto %></td>
+                            <td><%= produto.quantidade_produto %></td>
+                            <td><%= prodData[index].impostoSobOProduto %></td>
+                            <td><%= prodData[index].tipoDeImposto %></td>
+                            <td><%= prodData[index].valorFinanceiroEmEstoque %></td>
+                            <td><a class="btn btn-secondary modalOpen" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="preencherDados(this)">Editar</a></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content bg-dark" style="border-radius: 6%;">
+            <div class="modal-body">
+                <form action="/produtos?_method=PUT" method="post" class="mx-5 my-5">
+                    <h2 class='mb-5' id='modalTitulo'></h2>
+                    <div class="my-3">
+                        <label for="nomeProduto" class="form-label">Nome do Produto</label>
+                        <input type="text" class="form-control" id="nomeProduto" name="produto[nomeProduto]">
+                    </div>
+                    <div class="mb-3">
+                        <label for="valorProduto" class="form-label">Valor do produto</label>
+                        <input type="text" class="form-control" id="valorProduto" name="produto[valorProduto]">
+                    </div>
+                    <div class="mb-5">
+                        <label for="quantidadeProduto" class="form-label">Quantidade do produto</label>
+                        <input type="text" class="form-control" id="quantidadeProduto" name="produto[quantidadeProduto]">
+                        <input hidden type="text" class="form-control" id="idProduto" name="produto[idProduto]">
+                    </div>
+                    <div class="mt-3">
+                        <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-success">Salvar Alterações</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <script>
+        function preencherDados(botao){
+            const nomeProd = document.querySelector('#nomeProduto');
+            const valProd = document.querySelector('#valorProduto');
+            const qtdProd = document.querySelector('#quantidadeProduto');
+            const modalTitulo = document.querySelector('#modalTitulo');
+            const idProd = document.querySelector('#idProduto');
+            const campos = botao.parentElement.parentElement.getElementsByTagName('td');
+            
+            modalTitulo.innerHTML = `Editar Produto ID: ${campos[0].innerHTML}`;
+            nomeProd.setAttribute('value', campos[1].innerHTML);
+            valProd.setAttribute('value', campos[2].innerHTML);
+            qtdProd.setAttribute('value', campos[3].innerHTML);
+            idProd.setAttribute('value', campos[0].innerHTML);
+        }
+    </script>
