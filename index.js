@@ -2,7 +2,7 @@ const express = require('express');
 const methodOverride = require('method-override');
 const path = require('path');
 const ejsMate = require('ejs-mate');
-const { selectUsuarios, selectProdutos, updateProduto } = require('./database/index');
+const { selectUsuarios, selectProdutos, updateProduto, insertCustomer } = require('./database/index');
 const axios = require('axios').default;
 const requestParser = require('./util/getParser');
 
@@ -44,12 +44,20 @@ app.get('/produtos', async (req, res) => {
         console.log(error);
       });
   }
-
   repostaOrdenada(0);
+});
+
+app.get('/produtos/new', (req, res) => {
+  res.render('produtos/new');
 });
 
 app.put('/produtos', async (req, res) => {
   await updateProduto(req.body.produto);
+  res.redirect('/produtos');
+});
+
+app.post('/produtos', async (req, res) => {
+  await insertCustomer(req.body.produto);
   res.redirect('/produtos');
 });
 

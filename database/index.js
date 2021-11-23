@@ -36,4 +36,12 @@ async function updateProduto(produto){
   return conn.query(sql, values);
 }
 
-module.exports = { selectUsuarios, selectProdutos, updateProduto };
+async function insertCustomer(produto){
+  const conn = await connect();
+  console.log(produto);
+  const sql = 'INSERT INTO tb_produto(nome_produto,valor_produto,quantidade_produto) VALUES (?,?,?);';
+  const values = [produto.nomeProduto, produto.valorProduto, produto.quantidadeProduto];
+  return conn.query(sql, values);
+}
+
+module.exports = { selectUsuarios, selectProdutos, updateProduto, insertCustomer };

@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate')%>
+    <div class="col-md-6">
+        <form action="/produtos" method="post" class="mx-5 my-5">
+            <h2 class='mb-5' id='modalTitulo'>Novo Produto</h2>
+            <div class="my-3">
+                <label for="nomeProduto" class="form-label">Nome do Produto</label>
+                <input type="text" class="form-control" id="nomeProduto" name="produto[nomeProduto]">
+            </div>
+            <div class="mb-3">
+                <label for="valorProduto" class="form-label">Valor do produto</label>
+                <input type="text" class="form-control" id="valorProduto" name="produto[valorProduto]">
+            </div>
+            <div class="mb-5">
+                <label for="quantidadeProduto" class="form-label">Quantidade do produto</label>
+                <input type="text" class="form-control" id="quantidadeProduto" name="produto[quantidadeProduto]">
+            </div>
+            <div class="mt-3">
+                <button type="reset" class="btn btn-danger mx-5">Cancelar</button>
+                <button type="submit" class="btn btn-success mx-5">Enviar produto</button>
+            </div>
+        </form>
+    </div>
