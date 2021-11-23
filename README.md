@@ -3,66 +3,52 @@
 
 # Sobre o projeto
 
-https://vga-salespage.netlify.app
+https://qualite-ti-teste.herokuapp.com/
 
-VGA Sales Page é uma aplicação full stack web construída durante a 5ª edição da **Semana DevSuperior** (#sds5), evento organizado pela [DevSuperior](https://devsuperior.com "Site da DevSuperior").
+QualiteTI teste é uma aplicação fullstack construída para uma entrevista de emprego na empresa **QualitéTI**, site [QualitéTI](http://www.qualiteti.com.br/ "Site da QualitéTI").
 
-A aplicação consiste em um dashboard de vendas que recebe os dados do backend implantado no Heroku e os exibe de forma organizada em diferentes gráficos assim como uma lista de todos os dados armazenados no Banco de Dados.
+A aplicação consiste em dashboards de produtos e clientes que são listados apartir de dados recebidos de uma API proprietária da **QualitéTI** e um servidor MySQL. A aplicação permite as operações CRU básicas: Create, Update e Retrieve.
 
 ## Layout web
 ![Web 1](https://github.com/vitusan/vgasalespage/blob/main/assets/web1.png)
 
 ![Web 2](https://github.com/vitusan/vgasalespage/blob/main/assets/web2.png)
 
-## Modelo conceitual
-![Modelo Conceitual](https://github.com/vitusan/vgasalespage/blob/main/assets/sds5-mc.png)
+![Web 3](https://github.com/vitusan/vgasalespage/blob/main/assets/web2.png)
+
+![Web 4](https://github.com/vitusan/vgasalespage/blob/main/assets/web2.png)
 
 # Tecnologias utilizadas
 ## Back end
-- Java
-- Spring Boot
-- JPA / Hibernate
-- Maven
+- NodeJS
+- Express
+- MySQL
+- Axios
 ## Front end
 - HTML / CSS / JS / TypeScript
-- ReactJS
-- Apex Charts
+- EJS
+- BootStrap
 ## Implantação em produção
 - Back end: Heroku
-- Front end web: Netlify
-- Banco de dados: Postgresql
+- Front end web: Heroku
+- Banco de dados: MySQL
+## IDE
+- Visual Studio Code
 
 # Como executar o projeto
 
 ## Back end
-Pré-requisitos: Java 11
+Pré-requisitos: NodeJS/npm
 
 ```bash
 # clonar repositório
-git clone https://github.com/vitusan/vgasalespage
+git clone https://github.com/vitusan/testeQualiteTI
 
-# entrar na pasta do projeto back end
-cd backend
-
-# executar o projeto
-./mvnw spring-boot:run
-```
-
-## Front end web
-Pré-requisitos: npm / yarn
-
-```bash
-# clonar repositório
-git clone https://github.com/vitusan/vgasalespage
-
-# entrar na pasta do projeto front end web
-cd front-web
-
-# instalar dependências
-yarn install
+# instalar as dependências
+$ npm install
 
 # executar o projeto
-yarn start
+$ node index.js
 ```
 
 # Autor
